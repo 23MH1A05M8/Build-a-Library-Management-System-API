@@ -8,11 +8,40 @@ exports.list = async (req, res) => {
       include: [Member, Transaction]
     });
 
-    res.json(fines);
+    // Group fines by member
+    const grouped = {};
+
+    fines.forEach(fine => {
+      const mId = fine.member_id;
+
+      if (!grouped[mId]) {
+        grouped[mId] = {
+          member_id: fine.member_id,
+          member_name: fine.Member.name,
+          member_status: fine.Member.status,
+          total_fine: 0,
+          fines: []
+        };
+      }
+
+      grouped[mId].total_fine += parseFloat(fine.amount);
+
+      grouped[mId].fines.push({
+        fine_id: fine.id,
+        transaction_id: fine.transaction_id,
+        amount: parseFloat(fine.amount),
+        paid_at: fine.paid_at,
+        transaction_status: fine.Transaction.status
+      });
+    });
+
+    res.json(Object.values(grouped));
+
   } catch (err) {
     res.status(500).json({ error: "Error fetching fines" });
   }
 };
+
 
 // GET /fines/:id → Get a single fine
 exports.getById = async (req, res) => {

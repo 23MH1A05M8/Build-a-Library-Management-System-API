@@ -4,8 +4,33 @@ const Transaction = require("../models/Transaction");
 // Create a new member
 exports.createMember = async (req, res) => {
   try {
-    const member = await Member.create(req.body);
-    res.status(201).json(member);
+    let members = req.body;
+
+    // If single object → convert to array
+    if (!Array.isArray(members)) {
+      members = [members];
+    }
+
+    let results = [];
+
+    for (let data of members) {
+      try {
+        const newMember = await Member.create(data);
+        results.push({
+          message: "Member created successfully",
+          member: newMember
+        });
+      } catch (err) {
+        results.push({
+          error: "Failed to create member",
+          details: err.message,
+          input: data
+        });
+      }
+    }
+
+    res.status(201).json({ results });
+
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

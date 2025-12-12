@@ -3,38 +3,62 @@ const Book = require("../models/Book");
 // Create a new book
 exports.createBook = async (req, res) => {
   try {
-    const { isbn, total_copies, available_copies } = req.body;
+    let books = req.body;
 
-    // Check if a book with the same ISBN exists
-    let existingBook = await Book.findOne({
-      where: { isbn }
-    });
-
-    if (existingBook) {
-      // Add copies to existing book
-      existingBook.total_copies += total_copies;
-      existingBook.available_copies += available_copies;
-
-      await existingBook.save();
-
-      return res.status(200).json({
-        message: "Book already exists (ISBN matched). Copies updated.",
-        book: existingBook
-      });
+    // If request is a single object, convert to array
+    if (!Array.isArray(books)) {
+      books = [books];
     }
 
-    // If book does not exist, create new entry
-    const newBook = await Book.create(req.body);
+    let results = [];
 
-    res.status(201).json({
-      message: "New book created successfully",
-      book: newBook
-    });
+    for (let data of books) {
+      const { isbn, title, author, total_copies, available_copies } = data;
+
+      // Check ISBN in database
+      let existingBook = await Book.findOne({ where: { isbn } });
+
+      if (existingBook) {
+        // ISBN exists but details mismatch → reject
+        if (
+          existingBook.title !== title ||
+          existingBook.author !== author
+        ) {
+          results.push({
+            isbn,
+            error: "ISBN exists but book title/author mismatch. Cannot merge."
+          });
+          continue;
+        }
+
+        // If details match → update copies
+        existingBook.total_copies += total_copies;
+        existingBook.available_copies += available_copies;
+        await existingBook.save();
+
+        results.push({
+          isbn,
+          message: "Copies updated",
+          book: existingBook
+        });
+      } else {
+        // Create new book
+        const newBook = await Book.create(data);
+        results.push({
+          isbn,
+          message: "Book created",
+          book: newBook
+        });
+      }
+    }
+
+    res.status(201).json({ results });
 
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 };
+
 // Get all books
 exports.getAllBooks = async (req, res) => {
   try {

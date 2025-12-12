@@ -1,20 +1,20 @@
 {
 	"info": {
-		"_postman_id": "5ed9ea66-4ba9-4b2f-8cdd-6aba0f732355",
-		"name": "Library Management System API",
+		"_postman_id": "0ed7cf68-8429-4b62-8452-52e729ab79db",
+		"name": "Library-Management-System-API Copy 2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "50501341",
-		"_collection_link": "https://adarshakunisetty1608-9152528.postman.co/workspace/Adarshakunisetty's-Workspace~75286fe2-0ba1-45ec-8a89-f598f0fc834c/collection/50501341-5ed9ea66-4ba9-4b2f-8cdd-6aba0f732355?action=share&source=collection_link&creator=50501341"
+		"_collection_link": "https://adarshakunisetty1608-9152528.postman.co/workspace/Adarshakunisetty's-Workspace~75286fe2-0ba1-45ec-8a89-f598f0fc834c/collection/50501341-0ed7cf68-8429-4b62-8452-52e729ab79db?action=share&source=collection_link&creator=50501341"
 	},
 	"item": [
 		{
-			"name": "add Books",
+			"name": "Post first Book",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"isbn\": \"1235\",\r\n  \"title\": \"c\",\r\n  \"author\": \"c\",\r\n  \"category\": \"Programming\",\r\n  \"total_copies\": 5,\r\n  \"available_copies\": 5\r\n}\r\n",
+					"raw": "{\r\n  \"isbn\": \"12356\",\r\n  \"title\": \"c\",\r\n  \"author\": \"c\",\r\n  \"category\": \"Programming\",\r\n  \"total_copies\": 10,\r\n  \"available_copies\": 10\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -36,20 +36,68 @@
 			"response": []
 		},
 		{
-			"name": "get books - http://localhost:3000/books",
+			"name": "Post Books",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"isbn\": \"1234\",\r\n  \"title\": \"Java\",\r\n  \"author\": \"GAMES\",\r\n  \"category\": \"Programming\",\r\n  \"total_copies\": 5,\r\n  \"available_copies\": 5\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "update book author of book-3",
+			"name": "Get books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update book",
 			"request": {
 				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author\":\"Dennis\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:3000/books/availble",
+					"raw": "http://localhost:3000/books/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -57,17 +105,57 @@
 					"port": "3000",
 					"path": [
 						"books",
-						"availble"
+						"1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "get  available books",
+			"name": "Get books by ID",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/books/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"isbn\": \"78\",\r\n  \"title\": \"pytho\",\r\n  \"author\": \"python\",\r\n  \"category\": \"Programming\",\r\n  \"total_copies\": 1,\r\n  \"available_copies\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books"
+					]
+				}
 			},
 			"response": []
 		},
@@ -75,14 +163,149 @@
 			"name": "Delete book",
 			"request": {
 				"method": "DELETE",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/books/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						"3"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "Add members-http://localhost:3000/members",
+			"name": "Get availble books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/books/available",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						"available"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post multiple books at a time",
 			"request": {
 				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n  \"isbn\": \"1235890\",\r\n  \"title\": \"Python\",\r\n  \"author\": \"python\",\r\n  \"category\": \"Programming\",\r\n  \"total_copies\": 5,\r\n  \"available_copies\": 5\r\n},\r\n{\r\n    \"isbn\": \"12\",\r\n  \"title\": \"c++\",\r\n  \"author\": \"c++ author\",\r\n  \"category\": \"Programming\",\r\n  \"total_copies\": 1,\r\n  \"available_copies\": 1\r\n}\r\n]\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Member",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"hadassa\",\r\n  \"email\": \"23mh1a05@gmail.com\",\r\n  \"membership_number\": \"05M8\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/members",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post multiple members",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n  {\r\n    \"name\": \"Adarsha\",\r\n    \"email\": \"adarsha@gmail.com\",\r\n     \"membership_number\": \"05M1\"\r\n  },\r\n  {\r\n    \"name\": \"hema\",\r\n    \"email\": \"hema@gmail.com\",\r\n     \"membership_number\": \"05z8\"\r\n  }\r\n]\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/members",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Members",
+			"request": {
+				"method": "GET",
 				"header": [],
 				"url": {
 					"raw": "http://localhost:3000/members",
@@ -99,28 +322,21 @@
 			"response": []
 		},
 		{
-			"name": "get members",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "get members by id",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "update email of member-2",
+			"name": "Update member details",
 			"request": {
 				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"membership_number\": \"05X5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:3000/members/2",
+					"raw": "http://localhost:3000/members/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -128,7 +344,27 @@
 					"port": "3000",
 					"path": [
 						"members",
-						"2"
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get members by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/members/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"members",
+						"3"
 					]
 				}
 			},
@@ -138,86 +374,49 @@
 			"name": "Delete member",
 			"request": {
 				"method": "DELETE",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "transaction borrow",
-			"request": {
-				"method": "POST",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "get the transactions",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "transaction-book return",
-			"request": {
-				"method": "POST",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "transaction with overdue",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "Borrwing more than 3 books-Rule-1",
-			"request": {
-				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/transactions/borrow",
+					"raw": "http://localhost:3000/members/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"transactions",
-						"borrow"
+						"members",
+						"3"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Verify-3 return a book after due date",
+			"name": "Get members after delete",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/members",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"members"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "get fines",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "Rule-4 Member has unpaid fines",
+			"name": "Transaction Borrow",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"member_id\":1,\r\n    \"book_id\": 1\r\n}",
+					"raw": "{\r\n  \"book_id\": 1,\r\n  \"member_id\": 1\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -240,15 +439,366 @@
 			"response": []
 		},
 		{
-			"name": "Rule-5 Member is Suspend -member has more then 3 overdues",
+			"name": "Get members  borrowed book by id",
 			"request": {
-				"method": "POST",
-				"header": []
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/members/1/borrowed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"members",
+						"1",
+						"borrowed"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "pay fines",
+			"name": "Return Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"book_id\": 1,\r\n  \"member_id\": 1\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:3000/transactions/1/return",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"1",
+						"return"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transactions Overdue",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/transactions/overdue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"overdue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrowing more than 3 three book3 -boorow first book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"book_id\": 1,\r\n  \"member_id\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/transactions/borrow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"borrow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrow 2nd book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"book_id\": 1,\r\n  \"member_id\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/transactions/borrow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"borrow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrow 3rd book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"book_id\": 1,\r\n  \"member_id\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/transactions/borrow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"borrow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rule-1 Trying borrow another book rises an error",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"book_id\": 1,\r\n  \"member_id\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/transactions/borrow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"borrow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrow book the book for  showing penality",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"book_id\": 2,\r\n  \"member_id\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/transactions/borrow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"borrow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transactions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transactions Overdue",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/transactions/overdue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"overdue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "return a BOOK",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/transactions/5/return",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"5",
+						"return"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rule-3 Person borrowing a book but member has fine",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"book_id\": 2,\r\n  \"member_id\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/transactions/borrow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"borrow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get List of all fines",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"book_id\": 2,\r\n  \"member_id\": 2\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:3000/fines",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fines"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pay Fines",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -263,6 +813,315 @@
 						"fines",
 						"1",
 						"pay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check fines after paying fines",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/fines",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fines"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post a Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"isbn\": \"1\",\r\n  \"title\": \"python\",\r\n  \"author\": \"python\",\r\n  \"category\": \"Programming\",\r\n  \"total_copies\": 5,\r\n  \"available_copies\": 5\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get book posted now by book id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/books/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post a member",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"priya\",\r\n  \"email\": \"priya@gmail.com\",\r\n  \"membership_number\": \"04m8\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/members",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Member by id previously added one member",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/members/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"members",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrow a book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"book_id\": 5,\r\n  \"member_id\": 4\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/transactions/borrow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"borrow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrow a book 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"book_id\": 2,\r\n  \"member_id\": 4\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/transactions/borrow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"borrow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrow a book 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"book_id\": 2,\r\n  \"member_id\": 4\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/transactions/borrow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"borrow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transactions overdue",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/transactions/overdue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"overdue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get List of all fines",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/fines",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fines"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "After updating/completing 3 book return date member can be suspened",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/members/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"members",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "after a member has 3 overdues try to access another book message generate like member is suspended",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"book_id\": 2,\r\n  \"member_id\": 4\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/transactions/borrow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"borrow"
 					]
 				}
 			},
